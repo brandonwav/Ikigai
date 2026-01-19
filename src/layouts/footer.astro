@@ -1,0 +1,19 @@
+---
+const year = new Date().getFullYear()
+---
+
+<footer>
+    
+    <p>&copy; <span id="footer-year">{year}</span> - All rights reserved</p>
+  
+</footer>
+<script is:inline>
+  document.getElementById("footer-year").innerText = new Date().getFullYear();
+</script>
+
+<style>
+footer {
+  position: relative;
+  bottom: 0;
+}
+</style>
