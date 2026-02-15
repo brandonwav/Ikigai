@@ -1,0 +1,10 @@
+---
+const { src, title } = Astro.props;
+---
+
+<div class="audio-player">
+  <p>{title}</p>
+  <audio controls preload="none">
+    <source src={src} type="audio/mpeg" />
+  </audio>
+</div>

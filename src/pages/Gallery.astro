@@ -1,0 +1,84 @@
+---
+import { v2 as cloudinary } from 'cloudinary';
+import '../styles/Gallery.css';
+import Footer from "../components/Footer.astro";
+import HomeIcon from "../components/icon.astro";
+
+
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: 'brandonwav',
+  api_key: '798269453994389',
+  api_secret: '88AIPzEiCjPiXaa-2jPzJliOoe4',
+});
+
+// Fetch images from a folder at build time
+let images = [];
+
+try {
+  const resources = await cloudinary.api.resources({
+    type: 'upload',
+    prefix: '',   // your Cloudinary folder path
+    max_results: 50,
+    context: true // Include context (captions) in the response
+  });
+
+  images = resources.resources.map((res: any) => ({
+    src: res.secure_url,
+    caption: res.public_id.split('/').pop().replace(/-/g, ' '),
+    story: res.context?.custom?.alt || '', // Optional: can customize per image 
+  }));
+
+}
+ catch (err) {
+  console.error('Cloudinary fetch error:', err);
+}
+
+
+console.log('Fetched images:', images);
+---
+<HomeIcon size={40} />
+<body>
+
+<div class="gallery">
+  {images.map((image: any) => (
+    <div class="gallery-item">
+      <img src={image.src} alt={image.caption} />
+
+      <div class="story-text">{image.story}</div>
+    </div>
+  ))}
+</div>
+
+
+  <script>
+    const items = document.querySelectorAll(".gallery-item");
+
+    items.forEach((item) => {
+      const story = item.querySelector(".story-text");
+      if (!(story instanceof HTMLElement)) return;
+
+      // Hide story initially
+      story.style.display = "none";
+
+      item.addEventListener("click", () => {
+        // Toggle enlarged class
+        item.classList.toggle("enlarged");
+
+        // Toggle story display
+        if (story.style.display === "none") {
+          story.style.display = "block";
+        } else {
+          story.style.display = "none";
+        }
+      });
+    });
+  </script>
+</body>
+
+
+<Footer>
+</Footer>
+
+

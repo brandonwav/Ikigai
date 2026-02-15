@@ -1,0 +1,51 @@
+
+
+*{
+  font-family: Space Grotesk;
+    background-color: #36454F ;
+    color: white;
+    text-align: center;
+}
+
+.strava{
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    position: absolute;
+    text-align: center;
+
+}
+
+.Alltrails {
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    text-align: center;
+}
+
+div {
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 50%;
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    text-align: center;
+}   
+
+
+.icon {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+}
+
+.icon img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}

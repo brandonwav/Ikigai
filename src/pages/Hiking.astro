@@ -1,0 +1,35 @@
+---
+//Non-Adiabatic Walks
+import Footer from '../components/Footer.astro';
+import Main from '../layouts/main.astro';
+import HikingPosts from '../layouts/Hiking_posts.astro';
+import '../styles/Hiking_list.css'
+const title = 'Hiking';
+
+
+const hikelist = Object.values(import.meta.glob('./Hikes/*.md', { eager: true }));
+
+---
+
+<Main title = {title}>
+	<p slot="after-title"> Description of hikes page</a> </p>
+</Main>
+
+
+<!--<h2>Hiking Trails</h2>-->
+  {hikelist.map((hike: any) => <li class="hike-entry"><a href={hike.url} class="hike-link">
+      <div class="hike-details">
+        <p class="hike-name">{hike.frontmatter.title}</p>
+        <img src={hike.frontmatter.image} alt={hike.frontmatter.title} class="hike-image"/>
+        <p class="hike-date"><strong>Date:</strong> {hike.frontmatter.Date}</p>
+        <p class="hike-location"><strong>Location:</strong> {hike.frontmatter.location}</p>
+        <p class="hike-description"><strong>Description:</strong>{hike.frontmatter.Description}</p>
+      </div></a> 
+  
+  </li>
+  )}
+
+
+
+
+<Footer>	</Footer>

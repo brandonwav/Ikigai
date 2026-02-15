@@ -1,0 +1,47 @@
+
+
+  
+
+  .hike-details {
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+    width: 100%;
+    
+  }
+
+  .hike-entry:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .hike-link {
+    display: flex;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .hike-image {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .hike-details h3 {
+    margin: 0 0 0.3rem 0;
+    text-align: center;
+  }
+
+  .hike-name p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
+
+
+  }

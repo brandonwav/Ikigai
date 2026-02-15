@@ -1,0 +1,91 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+  background-color: grey;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+/* Gallery Grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 0.5rem;
+  transition: transform 0.3s ease, z-index 0s 0s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+
+
+.gallery-item.enlarged {
+  position: fixed;           /* Take it out of the grid */
+  top: 50%;                  /* Center vertically */
+  left: 50%;                 /* Center horizontally */
+  transform: translate(-50%, -50%) scale(1.8); /* Center + enlarge */
+  z-index: 1000;             /* On top of everything */
+  width: auto;               /* Maintain aspect ratio */
+  max-width: 90vw;           /* Don't go off screen */
+  max-height: 90vh;
+  transition: transform 0.3s ease;
+}
+
+/* Optional: dim background behind enlarged image */
+body::before {
+  content: "";
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 900;
+}
+
+.gallery-item.enlarged::before {
+  display: block;
+}
+
+
+/* Caption text */
+.caption-text {
+  font-weight: bold;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Story text */
+.story-text {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.3;
+}

@@ -1,0 +1,35 @@
+---
+import '../styles/Hiking_post.css';
+///decide on hiking app -upload map and statistics of hikes
+import Footer from "../components/Footer.astro";
+import HomeIcon from "../components/icon.astro";
+
+const { frontmatter } = Astro.props;
+---
+<HomeIcon size={40} />
+
+
+
+
+<h1>{frontmatter.title}</h1>
+<h4>{frontmatter.Date}</h4>
+
+<!-- Otional Alltrails embed -->
+{frontmatter.iframe && (
+  <div set:html={frontmatter.iframe}></div>
+)}
+<!-- Optional Strava embed -->
+{frontmatter.stravaEmbed && (
+  <div set:html={frontmatter.stravaEmbed}></div>
+)}
+
+
+<slot />
+
+
+<p style="height: 4rem;"></p>
+<Footer></Footer>
+
+
+
+

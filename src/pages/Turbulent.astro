@@ -1,0 +1,90 @@
+---
+import Main from '../layouts/main.astro';
+import Footer from '../components/Footer.astro';
+
+
+const title = 'Turbulent';
+const allPosts = Object.values(import.meta.glob('./Turbulent/*.md', { eager: true }));
+
+---
+
+
+<Main title = {title}>
+	<p slot="after-title">A bit more chaotic of a state</a> </p>
+</Main>
+
+<div class="container">
+    {allPosts.map((post: any) => <a class="word" href={post.url}>{post.frontmatter.post_number}</a>)}
+</div>
+
+
+
+
+<Footer></Footer>
+
+
+
+
+<style>
+html, body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.word {
+    display: block;
+    font-size: 1.5rem;
+    color: #4fc3f7;
+    animation: flowWave 12s linear infinite;
+    white-space: nowrap;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    will-change: transform;
+}
+
+@keyframes flowWave {
+    0% { transform: translateX(-20vw) translateY(-150px); }
+    25% { transform: translateX(25vw) translateY(-200px); }
+    50% { transform: translateX(50vw) translateY(200px); }
+    75% { transform: translateX(75vw) translateY(350px); }
+    100% { transform: translateX(120vw) translateY(-150px); }
+}
+
+@keyframes flowWave2 {
+    0% { transform: translateX(-20vw) translateY(220px); }
+    25% { transform: translateX(25vw) translateY(280px); }
+    50% { transform: translateX(50vw) translateY(-100px); }
+    75% { transform: translateX(75vw) translateY(-2200px); }
+    100% { transform: translateX(120vw) translateY(220px); }
+}
+
+@keyframes flowWave3 {
+    0% { transform: translateX(-20vw) translateY(-180px); }
+    25% { transform: translateX(25vw) translateY(-350px); }
+    50% { transform: translateX(50vw) translateY(120px); }
+    75% { transform: translateX(75vw) translateY(250px); }
+    100% { transform: translateX(120vw) translateY(-180px); }
+}
+
+.word:nth-child(1) { animation: flowWave 12s linear infinite; }
+.word:nth-child(2) { animation: flowWave2 20s linear infinite; animation-delay: -2s; }
+.word:nth-child(3) { animation: flowWave3 12s linear infinite; animation-delay: -4s; }
+.word:nth-child(4) { animation: flowWave 12s linear infinite; animation-delay: -6s; }
+.word:nth-child(n+5) { animation: flowWave2 12s linear infinite; animation-delay: calc(-2s * var(--index)); }
+
+</style>
+
+
+
+
+
+

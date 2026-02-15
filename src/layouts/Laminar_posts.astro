@@ -1,0 +1,34 @@
+---
+const { frontmatter } = Astro.props;
+import "../styles/Laminar_post.css";
+import Footer from "../components/Footer.astro" 
+import HomeIcon from "../components/icon.astro";
+
+
+---
+<meta charset="utf-8" />
+<h1>{frontmatter.title}</h1>
+<p>{frontmatter.Date}</p>
+<p><em>{frontmatter.description}</em></p>
+
+
+
+<img ?src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+
+
+{frontmatter?.audio?.url?.trim() && frontmatter?.audio?.type && (
+  <audio controls>
+    <source src={frontmatter.audio.url}type={frontmatter.audio.type}/></audio>)}
+
+{frontmatter?.video?.url && frontmatter?.video?.type && (
+  <video width="320" height="240" controls>
+    <source src={frontmatter.video.url} type={frontmatter.video.type} /></video>)}
+
+
+<slot />
+
+
+
+
+<HomeIcon size={40} />
+<Footer></Footer>

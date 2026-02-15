@@ -1,17 +1,66 @@
 ---
 import Main from "../layouts/main.astro"
-import Footer from "../layouts/footer.astro"
+import Footer from "../components/Footer.astro";
+import Card from "../components/Card.astro";
+
+
+const title = 'Ikigai';
+
+const pages = [
+  { name: 'Laminar', path: '/Laminar', description: 'Laminar' },
+  { name: 'Turbulent', path: '/Turbulent', description: 'Turbulent' },
+  { name: 'Hiking', path: '/Hiking', description: 'Non-Adiabatic Walks' },
+  { name: 'Gallery', path: '/Gallery', description: 'Flow Visualization' },
+];
+
+
 ---
 
 
-<Main title = 'home'>
-	<p>home page in astro layouyt</p>
+<Main title = {title}>
+	<p slot="after-title">A collection of thoughts  <br /> from a mere <a href="/about/"> Dasein</a> </p>
+	<div slot="after-body" class="grid">
+  {pages.map(item => (
+    <div class="card">
+	<a href={item.path}>{item.description}</a>
+
+    </div>
+  ))}
+</div>
 
 </Main>
 
+ <br /> 
 
-<Footer>
-	boo
-</Footer>
+
+
+ 
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 3rem;
+  }
+
+  .card {
+    padding: 4rem;
+    background: transparent;
+    border-radius: 30px;
+	text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border: 2px solid #e7e7e7;
+  
+a {
+	color: white;
+	font-size: 1.5rem;
+	text-decoration: none;}
+  }
+</style>
+
+
+<Footer>	</Footer>
+
+
+
 
 

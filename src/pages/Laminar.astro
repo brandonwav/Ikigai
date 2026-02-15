@@ -1,0 +1,24 @@
+---
+import Main from '../layouts/main.astro';
+import Footer from '../components/Footer.astro';
+
+
+const title = 'Laminar';
+const allPosts = Object.values(import.meta.glob('./Laminar/*.md', { eager: true }));
+---
+
+
+<Main title = {title}>
+	<p slot="after-title">A collection of thoughts which is well allinged and orderly.</a> </p>
+</Main>
+
+<u1>
+    {allPosts.reverse().map((post: any) => <li><a href={post.url}>{post.frontmatter.post_number}</a></li>)}
+</u1>
+
+
+
+
+
+<Footer></Footer>
+

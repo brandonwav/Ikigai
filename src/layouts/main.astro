@@ -1,28 +1,28 @@
 ---
 const {title} = Astro.props
-import "../styles/global.css"
+import "../styles/global.css";
+//import Navigation from "../components/nav.astro";
+import HomeIcon from "../components/icon.astro";
 ---
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title}</title>
+</head>
 
-	</head>
-	<body>
-        <h1>{title}</h1>
-        <hr class="my-line">
+<body>
+	<h1>{title}</h1>
+	<hr class="my-line">
+	<slot name="after-title" />
+	<hr class="my-line">
 
-        <nav>   
-            <a href='/'>Home</a>
-            <a href='/about'>about</a>
-            <a href='/hobbies'>hobbies</a>
-        </nav>
-		
-        <slot>
-	</body>
+	<br /> 
+</body>
+
+<slot name="after-body"/>
 
 
-</html>
+
+<HomeIcon size={40} />

@@ -1,0 +1,30 @@
+
+
+*{
+  font-family: Space Grotesk;
+    background-color: #36454F ;
+    color: white;
+    text-align: center;
+}
+
+.image {
+  display: block;
+  margin: 2rem auto;
+  max-width: 250px;
+  width: 50%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.icon {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+}
+
+.icon img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
